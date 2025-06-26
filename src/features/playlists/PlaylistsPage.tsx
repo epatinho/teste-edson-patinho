@@ -211,11 +211,7 @@ const PlaylistsPage: React.FC = () => {
     >
       <Flex alignItems="center" p={4}>
         <Image
-          src={
-            Array.isArray(playlist.images) && playlist.images[0]?.url
-              ? playlist.images[0].url
-              : '/logo512.png'
-          }
+          src={playlist.images?.[0]?.url || `${process.env.PUBLIC_URL}/logo512.png`}
           alt={`Capa da playlist ${playlist.name}`}
           width="60px"
           height="60px"

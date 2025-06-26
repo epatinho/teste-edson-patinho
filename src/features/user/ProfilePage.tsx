@@ -25,7 +25,7 @@ const ProfilePage: React.FC = () => {
               <Image
                 borderRadius="full"
                 boxSize="200px"
-                src={user.images?.[0]?.url || '/placeholder-user.png'}
+                src={user.images?.[0]?.url || `${process.env.PUBLIC_URL}/placeholder-user.png`}
                 alt={`Foto de ${user.display_name}`}
                 border="4px solid"
                 borderColor="green.400"

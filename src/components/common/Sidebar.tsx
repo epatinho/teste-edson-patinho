@@ -92,7 +92,7 @@ const Sidebar = () => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between" position="relative">
         <Image
-          src="/spotify-logo.png"
+          src={`${process.env.PUBLIC_URL}/spotify-logo.png`}
           alt="Spotify Logo"
           width="164px"
           height="49.06px"

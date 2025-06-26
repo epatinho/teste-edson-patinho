@@ -114,7 +114,7 @@ const ArtistDetailPage: React.FC = () => {
   const AlbumCard = ({ album }: { album: Album }) => (
     <Box display="flex" alignItems="center" p={3} overflow="hidden">
       <Image
-        src={album.images[0]?.url || '/placeholder-album.png'}
+        src={album.images[0]?.url || `${process.env.PUBLIC_URL}/placeholder-album.png`}
         alt={`Capa do álbum ${album.name}`}
         boxSize={{ base: '60px', md: '80px' }}
         objectFit="cover"
@@ -194,7 +194,7 @@ const ArtistDetailPage: React.FC = () => {
               </Button>
             </RouterLink>
             <Image
-              src={artist.images?.[0]?.url || '/placeholder-artist.png'}
+              src={artist.images?.[0]?.url || `${process.env.PUBLIC_URL}/placeholder-artist.png`}
               alt={artist.name}
               boxSize="56px"
               borderRadius="full"

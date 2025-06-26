@@ -29,7 +29,7 @@ const LoginPage: React.FC = () => {
       <Container maxW="container.sm" textAlign="center">
         <Flex justify="center" align="center" mb={6}>
           <Image
-            src="/spotify-logo.png"
+            src={`${process.env.PUBLIC_URL}/spotify-logo.png`}
             alt="Spotify Logo"
             width="164px"
             height="50px"

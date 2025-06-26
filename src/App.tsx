@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ChakraProvider, defaultSystem } from '@chakra-ui/react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ColorModeProvider } from './components/common/ChakraPolyfill';
@@ -23,12 +23,32 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
   return <>{children}</>;
 };
 
-function App() {
+const AppWrapper: React.FC = () => {
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+
+    const isSpotifyCallback = window.location.pathname === '/callback';
+
+    if (code && isSpotifyCallback) {
+      window.location.href = `${window.location.origin}/#/callback?code=${code}`;
+      return;
+    }
+
+    if (code && !window.location.hash) {
+      window.location.href = `${window.location.origin}/#/callback?code=${code}`;
+    }
+  }, []);
+
+  return <MainApp />;
+};
+
+const MainApp: React.FC = () => {
   return (
     <ColorModeProvider>
       <AuthProvider>
         <ChakraProvider value={defaultSystem}>
-          <BrowserRouter>
+          <HashRouter>
             <Routes>
               <Route path="/login" element={<LoginPage />} />
               <Route path="/callback/*" element={<CallbackPage />} />
@@ -75,11 +95,15 @@ function App() {
 
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
-          </BrowserRouter>
+          </HashRouter>
         </ChakraProvider>
       </AuthProvider>
     </ColorModeProvider>
   );
+};
+
+function App() {
+  return <AppWrapper />;
 }
 
 export default App;

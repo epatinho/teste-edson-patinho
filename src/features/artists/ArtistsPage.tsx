@@ -172,7 +172,9 @@ const ArtistsPage: React.FC = () => {
                       }}
                     >
                       <Image
-                        src={artist.images?.[0]?.url || '/spotify-logo.png'}
+                        src={
+                          artist.images?.[0]?.url || `${process.env.PUBLIC_URL}/spotify-logo.png`
+                        }
                         alt={`Foto de ${artist.name}`}
                         boxSize="50px"
                         borderRadius="full"
