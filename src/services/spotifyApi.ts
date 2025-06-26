@@ -90,7 +90,7 @@ export const getUserTopArtists = async (
         offset,
         time_range: 'medium_term',
       },
-      timeout: 10000, // Timeout de 10 segundos
+      timeout: 10000,
     });
     return response.data;
   } catch (error) {
