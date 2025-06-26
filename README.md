@@ -2,6 +2,25 @@
 
 Esta aplicação foi desenvolvida como parte de um desafio técnico, utilizando a API oficial do Spotify para criar uma experiência interativa que permite aos usuários visualizar seus artistas favoritos, playlists e gerenciar seu conteúdo musical.
 
+# Requisitos
+## Requisitos obrigatórios
+- [x] Seguimentação de commits
+- [x] Lint
+- [x] Autenticação via Spotify
+- [x] Listar artistas
+- [x] Listar albuns de um artista
+- [x] Utilizar paginação (scroll infinito ou não)
+- [x] Funcionamento offline
+- [x] Testes unitários
+- [x] Deploy da aplicação
+## Bônus
+- [ ] Testes E2E
+- [ ] Integração com Sentry
+- [x] CI/CD
+- [x] Responsividade (celular e tablet)
+- [x] Qualidade de código (Sonarqube)
+- [x] PWA
+
 ## 🚀 Funcionalidades
 
 - **Autenticação via Spotify OAuth 2.0**: Login seguro usando o fluxo de autorização do Spotify
@@ -81,19 +100,31 @@ cd teste-edson-patinho
 npm install
 ```
 
-3. Configure as variáveis de ambiente: Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+3. Configure as variáveis de ambiente: 
+
+**Opção 1 - Usar o template existente (Recomendado)**: 
+O projeto já inclui um arquivo `.env.test.local` com um template das variáveis necessárias. Simplesmente edite este arquivo e substitua os valores pelos seus dados reais do Spotify:
+
 ```
-REACT_APP_CLIENT_ID=seu_client_id_do_spotify
-REACT_APP_CLIENT_SECRET=seu_client_secret_do_spotify
-REACT_APP_REDIRECT_URI=http://localhost:3000/callback
+HOST=127.0.0.1
+PORT=3000
+HTTPS=true
+REACT_APP_CLIENT_ID=seu_client_id_aqui
+REACT_APP_CLIENT_SECRET=seu_client_secret_aqui
+REACT_APP_REDIRECT_URI=https://127.0.0.1:3000/callback
 ```
+
+**Opção 2 - Criar um novo arquivo .env**:
+Crie um arquivo `.env` na raiz do projeto com as mesmas variáveis acima.
+
+> **Nota**: O arquivo `.env.test.local` está configurado para não ser rastreado pelo Git após a primeira edição, mantendo suas credenciais seguras.
 
 ### Executando o Projeto
 
 ```
 npm start
 ```
-Acesse a aplicação em http://localhost:3000
+Acesse a aplicação em https://127.0.0.1:3000/
 
 ### Scripts Disponíveis
 
@@ -169,4 +200,4 @@ O projeto segue uma estratégia de branches baseada no GitFlow:
 
 ---
 
-Desenvolvido com ❤️ por Edson Junior
+Desenvolvido por Edson Patinho Jr.
