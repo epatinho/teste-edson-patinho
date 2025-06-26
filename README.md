@@ -14,7 +14,7 @@ Esta aplicação foi desenvolvida como parte de um desafio técnico, utilizando 
 - [x] Testes unitários
 - [x] Deploy da aplicação
 ## Bônus
-- [ ] Testes E2E
+- [x] Testes E2E
 - [ ] Integração com Sentry
 - [x] CI/CD
 - [x] Responsividade (celular e tablet)
@@ -147,11 +147,37 @@ A aplicação implementa um Service Worker para permitir:
 
 ## 🧪 Testes
 
-O projeto possui testes unitários para componentes e lógica de negócio, utilizando Jest e React Testing Library, com foco em:
+O projeto possui uma suite completa de testes para garantir qualidade e confiabilidade:
+
+### Testes Unitários
+Utilizando Jest e React Testing Library, com foco em:
 - Componentes de UI
 - Hooks personalizados
 - Context de autenticação
 - Lógica de serviços
+
+### Testes E2E (End-to-End)
+Implementados com **Cypress** para automação completa dos cenários de teste:
+
+#### 🤖 Testes E2E Automatizados (Cypress)
+- **npm run test:e2e:dev**: Inicia servidor automaticamente + executa todos os testes E2E
+- **npm run test:e2e:dev:open**: Inicia servidor automaticamente + abre interface interativa do Cypress
+- **npm run test:e2e**: Executa todos os testes E2E em modo headless (servidor já deve estar rodando)
+- **npm run test:e2e:open**: Abre interface do Cypress para execução interativa (servidor já deve estar rodando)
+- **npm run test:e2e:headed**: Executa testes com interface visual (servidor já deve estar rodando)
+
+**Cenários cobertos automaticamente:**
+- Fluxo completo de autenticação (login/logout)
+- Navegação e listagem de artistas
+- Navegação entre diferentes páginas da aplicação
+- Responsividade em diferentes resoluções (mobile, tablet, desktop)
+- Funcionalidade offline/PWA
+- Tratamento gracioso de erros de API
+
+**Comandos personalizados criados:**
+- `cy.loginWithSpotify()` - Simula autenticação com dados mock
+- `cy.logoutFromSpotify()` - Limpa dados de autenticação
+- `cy.goOffline()` / `cy.goOnline()` - Simula estados de conectividade
 
 ## 📝 Padrões de Commits e Fluxo de Branches
 
