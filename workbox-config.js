@@ -62,7 +62,7 @@ module.exports = {
         "cacheName": "fonts",
         "expiration": {
           "maxEntries": 20,
-          "maxAgeSeconds": 2592000  // 30 dias
+          "maxAgeSeconds": 2592000
         }
       }
     }

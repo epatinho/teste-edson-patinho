@@ -82,7 +82,7 @@ describe('Spotify App - E2E Tests', () => {
                                text.includes('Artists') ||
                                text.includes('Seus artistas') ||
                                text.includes('Top Artists') ||
-                               text.length > 100; // Se tem conteúdo, considera válido
+                               text.length > 100;
         if (!hasExpectedText) {
           throw new Error('Página não carregou o conteúdo esperado de artistas');
         }

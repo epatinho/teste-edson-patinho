@@ -30,6 +30,8 @@
     "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "react-scripts test --coverage --watchAll=false",
+    "test:coverage:watch": "react-scripts test --coverage",
+    "test:coverage:open": "npm run test:coverage && xdg-open coverage/lcov-report/index.html",
     "test:e2e": "cypress run",
     "test:e2e:open": "cypress open",
     "test:e2e:headed": "cypress run --headed",
@@ -72,5 +74,35 @@
     "prettier": "^3.6.0",
     "start-server-and-test": "^2.0.12",
     "typescript": "^4.9.5"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts",
+      "!src/index.tsx",
+      "!src/reportWebVitals.ts",
+      "!src/service-worker.ts",
+      "!src/serviceWorkerRegistration.ts",
+      "!src/setupTests.ts"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(axios)/)"
+    ],
+    "moduleNameMapper": {
+      "^axios$": "axios/dist/node/axios.cjs"
+    }
   }
 }

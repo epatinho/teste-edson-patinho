@@ -17,7 +17,7 @@ export const AlertIcon: React.FC = () => (
 type ColorMode = 'dark';
 type ColorModeContextType = {
   colorMode: ColorMode;
-  toggleColorMode: () => void; // mantido para compatibilidade, mas não fará nada
+  toggleColorMode: () => void;
 };
 
 const ColorModeContext = createContext<ColorModeContextType>({
@@ -86,9 +86,7 @@ export const ColorModeProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     document.head.appendChild(styleTag);
   }, []);
 
-  const toggleColorMode = () => {
-    // Não faz nada, pois temos apenas um tema
-  };
+  const toggleColorMode = () => {};
 
   return (
     <ColorModeContext.Provider value={{ colorMode, toggleColorMode }}>
