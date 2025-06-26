@@ -1,0 +1,39 @@
+name: CI - Release Branch Validation
+
+on:
+  push:
+    branches:
+      - release/**
+
+jobs:
+  ci:
+    name: Run Tests and SonarQube
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code (full history for SonarQube)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests with coverage
+        run: npm test -- --coverage
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
+
+      - name: Test build
+        run: npm run build
+        env:
+          CI: false
