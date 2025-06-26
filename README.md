@@ -79,6 +79,14 @@ A arquitetura e as tecnologias foram escolhidas visando três aspectos principai
 - **Paginação com Scroll Infinito**: Carregamento eficiente de grandes listas de dados
 - **Chakra UI**: Sistema de componentes otimizados com estilos em JS para melhor performance
 
+## 🚀 Demo
+
+**URL de Acesso:** [https://epatinho.github.io/teste-edson-patinho/](https://epatinho.github.io/teste-edson-patinho/)
+
+> **Observação Importante:** Por utilizar uma licença de desenvolvimento do Spotify, apenas usuários previamente cadastrados na lista de permissões podem efetuar login. Se desejar testar a aplicação, entre em contato para adicionar seu e-mail do Spotify à lista de permissões.
+
+Este demo foi implantado automaticamente através do pipeline de CI/CD do GitHub Actions configurado no projeto. O processo completo inclui testes unitários, análise de qualidade com SonarQube e deploy automático para o GitHub Pages sempre que há um merge na branch main.
+
 ## 🏃‍♂️ Como Executar
 
 ### Pré-requisitos
