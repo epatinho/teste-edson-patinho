@@ -91,7 +91,7 @@
       "html"
     ],
     "coverageThreshold": {
-      "global": { // Idealmente deve ser 80% em produção
+      "global": {
         "branches": 30,
         "functions": 30,
         "lines": 30,
