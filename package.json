@@ -29,11 +29,17 @@
     "start": "react-scripts start",
     "build": "CI=false react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "test:coverage": "react-scripts test --coverage --watchAll=false",
-    "lint": "eslint --ext .ts,.tsx src/",
-    "lint:fix": "eslint --ext .ts,.tsx src/ --fix",
-    "format": "prettier --write \"src/**/*.{ts,tsx,json,css}\"",
+    "test:coverage:watch": "react-scripts test --coverage",
+    "test:coverage:open": "npm run test:coverage && xdg-open coverage/lcov-report/index.html",
+    "test:e2e": "cypress run",
+    "test:e2e:open": "cypress open",
+    "test:e2e:headed": "cypress run --headed",
+    "test:e2e:dev": "start-server-and-test start https://127.0.0.1:3000 test:e2e",
+    "test:e2e:dev:open": "start-server-and-test start https://127.0.0.1:3000 test:e2e:open",
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,json,css,md}\"",
     "build:pwa": "react-scripts build && workbox generateSW workbox-config.js",
     "serve": "serve -s build"
   },
@@ -56,14 +62,47 @@
     ]
   },
   "devDependencies": {
+    "@cypress/react": "^9.0.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "cypress": "^14.5.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.0",
     "jest": "^27.5.1",
     "jest-environment-jsdom": "^30.0.2",
     "prettier": "^3.6.0",
+    "start-server-and-test": "^2.0.12",
     "typescript": "^4.9.5"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts",
+      "!src/index.tsx",
+      "!src/reportWebVitals.ts",
+      "!src/service-worker.ts",
+      "!src/serviceWorkerRegistration.ts",
+      "!src/setupTests.ts"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 30,
+        "functions": 30,
+        "lines": 30,
+        "statements": 30
+      }
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(axios)/)"
+    ],
+    "moduleNameMapper": {
+      "^axios$": "axios/dist/node/axios.cjs"
+    }
   }
 }

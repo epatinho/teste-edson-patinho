@@ -67,7 +67,6 @@ const Sidebar = () => {
     });
   };
 
-  // Wrappers para resolver problemas de tipagem com react-icons
   const HomeIcon = () => React.createElement(FaHome as any);
   const MusicIcon = () => React.createElement(FaMusic as any);
   const ListIcon = () => React.createElement(FaListUl as any);

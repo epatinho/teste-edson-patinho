@@ -14,7 +14,7 @@ Esta aplicação foi desenvolvida como parte de um desafio técnico, utilizando 
 - [x] Testes unitários
 - [x] Deploy da aplicação
 ## Bônus
-- [ ] Testes E2E
+- [x] Testes E2E
 - [ ] Integração com Sentry
 - [x] CI/CD
 - [x] Responsividade (celular e tablet)
@@ -103,7 +103,7 @@ npm install
 3. Configure as variáveis de ambiente: 
 
 **Opção 1 - Usar o template existente (Recomendado)**: 
-O projeto já inclui um arquivo `.env.test.local` com um template das variáveis necessárias. Simplesmente edite este arquivo e substitua os valores pelos seus dados reais do Spotify:
+O projeto já inclui um arquivo `.env.test.local` com um template das variáveis necessárias. Renomeie este arquivo para `.env` e substitua os valores pelos seus dados reais do Spotify:
 
 ```
 HOST=127.0.0.1
@@ -115,9 +115,9 @@ REACT_APP_REDIRECT_URI=https://127.0.0.1:3000/callback
 ```
 
 **Opção 2 - Criar um novo arquivo .env**:
-Crie um arquivo `.env` na raiz do projeto com as mesmas variáveis acima.
+Caso prefira, crie um novo arquivo `.env` na raiz do projeto com as mesmas variáveis acima.
 
-> **Nota**: O arquivo `.env.test.local` está configurado para não ser rastreado pelo Git após a primeira edição, mantendo suas credenciais seguras.
+> **Nota**: O arquivo `.env` está configurado para não ser rastreado pelo Git, mantendo suas credenciais seguras.
 
 ### Executando o Projeto
 
@@ -145,13 +145,61 @@ A aplicação implementa um Service Worker para permitir:
 - Experiência de instalação em dispositivos móveis
 - Atualizações automáticas quando uma nova versão está disponível
 
-## 🧪 Testes
+## 🧪 Testes e Qualidade de Código
 
-O projeto possui testes unitários para componentes e lógica de negócio, utilizando Jest e React Testing Library, com foco em:
+O projeto possui uma suite completa de testes para garantir qualidade e confiabilidade:
+
+### Testes Unitários
+Utilizando Jest e React Testing Library, com foco em:
 - Componentes de UI
 - Hooks personalizados
 - Context de autenticação
 - Lógica de serviços
+
+**Objetivos de Cobertura:**
+- **Atual:** Mínimo de 30% de cobertura para branches, functions, lines e statements para título de exemplo
+- **Ideal:** Ter 80% de cobertura em todos os aspectos
+- **Comandos:**
+  ```
+  npm run test:coverage      # Executa testes com relatório de cobertura
+  npm run test:coverage:open # Visualiza relatório HTML de cobertura
+  ```
+
+### Testes E2E (End-to-End)
+Implementados com **Cypress** para automação completa dos cenários de teste:
+
+#### 🤖 Testes E2E Automatizados (Cypress)
+- **npm run test:e2e:dev**: Inicia servidor automaticamente + executa todos os testes E2E
+- **npm run test:e2e:dev:open**: Inicia servidor automaticamente + abre interface interativa do Cypress
+- **npm run test:e2e**: Executa todos os testes E2E em modo headless (servidor já deve estar rodando)
+- **npm run test:e2e:open**: Abre interface do Cypress para execução interativa (servidor já deve estar rodando)
+- **npm run test:e2e:headed**: Executa testes com interface visual (servidor já deve estar rodando)
+
+**Cenários cobertos automaticamente:**
+- Fluxo completo de autenticação (login/logout)
+- Navegação e listagem de artistas
+- Navegação entre diferentes páginas da aplicação
+- Responsividade em diferentes resoluções (mobile, tablet, desktop)
+- Funcionalidade offline/PWA
+- Tratamento gracioso de erros de API
+
+**Comandos personalizados criados:**
+- `cy.loginWithSpotify()` - Simula autenticação com dados mock
+- `cy.logoutFromSpotify()` - Limpa dados de autenticação
+- `cy.goOffline()` / `cy.goOnline()` - Simula estados de conectividade
+
+### SonarQube
+O projeto está integrado ao SonarCloud para análise contínua de qualidade de código. A análise é executada automaticamente na branch principal (main) e em todas as branches de release.
+
+O SonarCloud verifica:
+- Code smells
+- Bugs potenciais
+- Vulnerabilidades de segurança
+- Duplicação de código
+- Complexidade ciclomática
+- Cobertura de testes
+
+A configuração do SonarQube está definida no arquivo `sonar-project.properties` e a análise é executada como parte do pipeline de CI/CD nos workflows do GitHub Actions.
 
 ## 📝 Padrões de Commits e Fluxo de Branches
 

@@ -9,7 +9,7 @@ export const formatReleaseDate = (releaseDate: string): string => {
     const date = new Date(releaseDate);
 
     if (isNaN(date.getTime())) {
-      return releaseDate; // Retorna o valor original se não for uma data válida
+      return releaseDate;
     }
 
     if (releaseDate.length === 7) {
