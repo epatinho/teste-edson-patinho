@@ -1,0 +1,29 @@
+{
+  "short_name": "Spotify App",
+  "name": "Spotify App - Gerenciador de Música",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1DB954",
+  "background_color": "#121212",
+  "orientation": "portrait",
+  "description": "Um aplicativo para explorar seus artistas favoritos, álbuns e playlists do Spotify.",
+  "categories": ["music", "entertainment", "social"]
+}
