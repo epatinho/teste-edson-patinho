@@ -17,8 +17,8 @@ const STATIC_ASSETS = [
   '/static/css/',
   '/static/js/',
   '/manifest.json',
-  '/logo192.png',
-  '/logo512.png',
+  `${process.env.PUBLIC_URL}/logo192.png`,
+  `${process.env.PUBLIC_URL}/logo512.png`,
   '/favicon.ico',
 ];
 

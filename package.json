@@ -1,6 +1,7 @@
 {
   "name": "teste-edson-patinho",
   "version": "1.0.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^3.21.0",
