@@ -7,7 +7,7 @@ on:
 
 jobs:
   validate-branch:
-    name: Ensure PR to main comes from release/*
+    name: Ensure PR to main comes from release/* or hotfix/*
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -17,8 +17,8 @@ jobs:
         run: |
           COMMIT_MESSAGE=$(git log -1 --pretty=%B)
           echo "Commit Message: $COMMIT_MESSAGE"
-          if ! echo "$COMMIT_MESSAGE" | grep -E "Merge pull request #.* from .*release/"; then
-            echo "🚫 Push para main só pode vir de release/*"
+          if ! echo "$COMMIT_MESSAGE" | grep -E "Merge pull request #.* from .*(release|hotfix)/"; then
+            echo "🚫 Push para main só pode vir de release/* ou hotfix/*"
             exit 1
           fi
 
