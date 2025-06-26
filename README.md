@@ -100,17 +100,24 @@ cd teste-edson-patinho
 npm install
 ```
 
-3. Configure as variáveis de ambiente: Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+3. Configure as variáveis de ambiente: 
+
+**Opção 1 - Usar o template existente (Recomendado)**: 
+O projeto já inclui um arquivo `.env.test.local` com um template das variáveis necessárias. Simplesmente edite este arquivo e substitua os valores pelos seus dados reais do Spotify:
+
 ```
 HOST=127.0.0.1
 PORT=3000
 HTTPS=true
-REACT_APP_CLIENT_ID=<client_id>
-REACT_APP_CLIENT_SECRET=<client_secret>
+REACT_APP_CLIENT_ID=seu_client_id_aqui
+REACT_APP_CLIENT_SECRET=seu_client_secret_aqui
 REACT_APP_REDIRECT_URI=https://127.0.0.1:3000/callback
 ```
 
-**Alternativa**: Você pode renomear o arquivo `.env.test.local` para `.env` e adicionar suas credenciais.
+**Opção 2 - Criar um novo arquivo .env**:
+Crie um arquivo `.env` na raiz do projeto com as mesmas variáveis acima.
+
+> **Nota**: O arquivo `.env.test.local` está configurado para não ser rastreado pelo Git após a primeira edição, mantendo suas credenciais seguras.
 
 ### Executando o Projeto
 
